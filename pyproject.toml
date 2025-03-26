@@ -1,0 +1,27 @@
+[project]
+name = "streamlit-llama-blog"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Nevivaghani", email = "nevivaghani793@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"  
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+flask = "^3.1.0"
+flask-cors = "^5.0.1"
+streamlit = "^1.44.0"
+transformers = "^4.50.1"
+torch = "^2.6.0"
+requests = "^2.32.3"
+accelerate = "^1.5.2"
+sentencepiece = "^0.2.0"
+bitsandbytes = "^0.45.4"
+ctransformers = "^0.2.27"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
