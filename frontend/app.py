@@ -1,22 +1,12 @@
-import streamlit as st
-import requests
+from flask import Flask
+from flask_cors import CORS
+from routes import generate_bp  # Import routes
 
-# Streamlit UI
-st.title("LLaMA 2 Blog Generator")
-st.write("Generate AI-powered blog content with LLaMA 2!")
+app = Flask(__name__)
+CORS(app)
 
-prompt = st.text_area("Enter a prompt for the blog")
+# Register blueprints
+app.register_blueprint(generate_bp)
 
-if st.button("Generate Blog"):
-    if prompt:
-        response = requests.post("http://127.0.0.1:8000/generate", json={"prompt": prompt}, timeout=120)
-        print(response.json())
-        
-        if response.status_code == 200:
-            st.write("### Generated Blog:")
-            st.write(response.json()["blog"])
-        else:
-            st.error("Error generating blog content")
-    else:
-        st.warning("Please enter a prompt")
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)
