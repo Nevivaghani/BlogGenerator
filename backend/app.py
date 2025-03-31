@@ -15,7 +15,8 @@ def generate_blog():
     prompt = data.get("prompt", "")
     
     print("Generating response...")
-    response = generator(prompt, max_length=5, do_sample=True, top_p=0.9, temperature=0.7)  # Adjust parameters
+    # response = generator(prompt, max_length=5, do_sample=True, top_p=0.9, temperature=0.7)  # Adjust parameters
+    response = generator(prompt, max_length=5, truncation=True, do_sample=True, top_p=0.9, temperature=0.7)
     response_text = response[0]["generated_text"]
     
     return jsonify({"blog": response_text})
